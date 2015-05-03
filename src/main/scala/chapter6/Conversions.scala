@@ -5,4 +5,7 @@ package chapter6
  */
 object Conversions {
 
+    def inchesToCentimeters = {}
+    def gallonsToLiters = {}
+    def milesToKilometers = {}
 }
