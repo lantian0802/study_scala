@@ -8,7 +8,7 @@ import com.sun.org.apache.xml.internal.security.transforms.params.XPath2FilterCo
 object TypeSystem {
 
     def main(args : Array[String]): Unit = {
-        typeSystem5()
+        //typeSystem10()
     }
 
    /* def typeSystem1(): Unit = {
@@ -94,4 +94,28 @@ object TypeSystem {
             }
         }
     }
+
+    def typeSystem9(): Unit = {
+
+        class A;class B
+        implicit def string2A(s:String) = new A
+        implicit def string2B(s:String) = new B
+
+        def foo[T <% A <% B](x:T) = println("OK")
+
+        foo("test")
+    }
+
+    /*def typeSystem10(): Unit = {
+        def foo[T](x : List[T])(implicit m: Manifest[T]) = {
+            if(m <:< Manifest[String]) {
+                println("Hey, this list is full of strings")
+            } else {
+                println("Non-stringy list")
+            }
+        }
+        foo(List("one", "two")) // Hey, this list is full of strings
+        foo(List(1, 2)) // Non-stringy list
+        foo(List("one", 2)) // Non-stringy list
+    }*/
 }
